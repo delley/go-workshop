@@ -5,22 +5,22 @@
 *Array* é uma sequência de elementos do mesmo tipo de dados. Um *array* tem um tamanho fixo que é definido em sua declaração, e não pode ser mais alterado depois de declarado.
 
 
-Eles podem ser declaradas assim:
+Eles podem ser declarados assim:
 ```golang
 var a [10]int
 ```
 
-*Arrays* também podem ser multidimensionais.
+*Arrays* também podem ser multidimensionais:
 ```golang
 var arr [3][3]int
 ```
 
-Iniciando um *array* com valores.
+Iniciando um *array* com valores:
 ```golang
 var arr [3]int{1, 7, 11}
 ```
 
-Atribuindo valores a um *array* já definida.
+Atribuindo valores a um *array* já definida:
 ```golang
 var arr [3]int
 arr[0] = 1
@@ -55,13 +55,13 @@ func main() {
 
 Visto tudo isto, podemos dizer:
 
-*Arrays* são limitadas para casos específicos onde os valores podem mudar em tempo de execução.
+*Arrays* são limitados para casos específicos onde os valores podem mudar em tempo de execução.
 
 Mas não se preocupe, para isto temos os *Slices*.
 
 ## Slices
 
-*Slices* é *wrap* flexível e robusto que abstrai um *array*. Em resumo, um *slice* não detém nenhum dado nele. Ele apenas referencía *arrays* existentes.
+*Slice* é *wrap* flexível e robusto que abstrai um *array*. Em resumo, um *slice* não detém nenhum dado nele. Ele apenas referencía *arrays* existentes.
 
 A declaração de um *slice* é parecida com a de um *array*, mas sem a capacidade definida.
 
@@ -89,25 +89,24 @@ O código acima criou um *slice* sem capacidade inicial e sem nenhum elemento.
 Criando um *slice* a partir de um array:
 
 ```golang
-package main
-
-import "fmt"
-
-func main() {
-    a := [5]int{76, 77, 78, 79, 80}
-    // cria um slice de a[1] até a[3]
-    var b []int = a[1:4]
-    fmt.Println(b)
-}
+1  package main
+2  
+3  import "fmt"
+4  
+5  func main() {
+6     a := [5]int{76, 77, 78, 79, 80}
+7     // cria um slice de a[1] até a[3]
+8     var b []int = a[1:4]
+9     fmt.Println(b)
+10 }
 ```
 
-A sintaxe `a[start:end]` cria um *slice* a partir do *array* `a` iniciando do índice `start` até o índice `end - 1`.
-Então na linha 8 do código acima, `a[1:4]` cria uma representação do *array* `a` iniciando do índice 1 até o 3. Sendo assim o slice `b` tem os valores [77 78 79].
+A sintaxe `a[start:end]` cria um *slice* a partir do *array* `a` iniciando do índice `start` até o índice `end - 1`. Então, na linha 8 do código acima, `a[1:4]` cria uma representação do *array* `a` iniciando do índice 1 até o 3. Sendo assim, o slice `b` tem os valores [77 78 79].
 
 
-Criando um *slice* usando `make()`, uma função nativa do Go, que cria um *array* e retorna um *slice* referenciando a mesma.
+Um *slice* pode ser criado usando a função `make()`, uma função nativa do Go que cria um *array* e retorna um *slice* referenciando o mesmo.
 
-`func make([]T, len, cap) []T` pode ser usado para criar um *slice*, passando como parâmetro o tipo, o tamanho e a capacidade. A capacidade é opcional, e caso não informada seu *default* é o `len` que é um campo obrigatório.
+A sintaxe `func make([]T, len, cap) []T` pode ser usado para criar um *slice*. Neste caso, é passando como parâmetro o tipo, o tamanho e a capacidade. A capacidade é opcional, e caso não informada, seu valor *default* será o `len`, que é um campo obrigatório.
 
 ```golang
 package main
@@ -131,7 +130,7 @@ A definição da função `append` é a seguinte: `func append(s []T, x ...T) []
 A sintaxe, `x ...T` significa que a função aceita um número variável de elementos no parâmetro `x`, desde que respeitem o tipo do *slice*.
 
 Uma questão que pode ter *ficado no ar*: Se um slice é um *wrap* de um *array*, como ela tem esta flexibilidade?
-Bem, isso acontecer *debaixo dos panos*. Por exemplo: quando um novo elemento é adicionado a um *slice* ocorre o seguinte:
+Bem, isso acontece *debaixo dos panos*. Por exemplo: quando um novo elemento é adicionado a um *slice* ocorre o seguinte:
 
 1. Um novo *array* é criado
 2. Os elementos do *array* atual são copiados
@@ -149,7 +148,7 @@ Em Go, *Maps* são o tipo de dado que mapeia uma chave a um valor, como em Java 
 
 *Fucking obvious*
 
-Declarando um *map* em Go
+Declarando um *map* em Go:
 
 ```golang
 var m map[string]int
@@ -157,7 +156,7 @@ var m map[string]int
 
 Acima, a variável `m` referencía o mapa criado, no qual a chave é uma `string` e o valor é um `int`.
 
-Abaixo alguns exemplos de uso de map.
+Abaixo alguns exemplos de uso de map:
 
 ```golang
 package main
